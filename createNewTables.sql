@@ -1,9 +1,10 @@
 CREATE DATABASE IF NOT EXISTS normalization;
+USE normalization;
 
 CREATE TABLE NewPostalCode(
     postalCode VARCHAR,
     cityName VARCHAR,
-    provName VARCHAR
+    provName VARCHAR,
     PRIMARY KEY(postalCode)
 );
 
