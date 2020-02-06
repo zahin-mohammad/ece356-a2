@@ -9,14 +9,29 @@ INSERT INTO NewDepartment (deptID, deptName)
     SELECT DISTINCT Department.deptID, Department.deptName
     FROM Department 
     );
--- regex for street number ([1-9][^\s,A-z]\S)
--- regex for street name ([^1-9\s][A-z]+\s[A-z]+)
+-- regex for street number (\b\d+\b)
+-- regex for street name ([A-z]+)(\s[A-z\b]+)
+-- regex for city ([^A-z][\s]\b[A-z]+\b\,)
+--  regex replace \,\s*
+-- regex for postal .{7}$
+-- regex for Province \b[A-z]+\b\,\s[A-Z][0-9]
+--  regex replace .{4}$
 INSERT INTO NewPostalCode (postalCode, cityName, provName) 
     (
     SELECT DISTINCT 
-    REGEXP_SUBSTR(Department.location,""),
-    REGEXP_SUBSTR(Department.location, ""),
-    REGEXP_SUBSTR(Department.location, "")
+    REGEXP_SUBSTR(Department.location,".{7}$"),
+    REGEXP_REPLACE(
+        REGEXP_SUBSTR(Department.location, ""),
+        "[^A-z][\s]\b[A-z]+\b\,",
+        "\,\s*",
+        ""
+    ),
+    REGEXP_REPLACE
+        (
+        REGEXP_SUBSTR(Department.location, "\b[A-z]+\b\,\s[A-Z][0-9]"),
+        ".{4}$",
+        ""
+        )
     FROM Department 
     );
 
