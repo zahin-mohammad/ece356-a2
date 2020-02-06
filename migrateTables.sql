@@ -5,8 +5,8 @@ INSERT INTO NewEmployee (empID, firstName, middleName, lastName, job, salary)
     REGEXP_SUBSTR(Employee.empName, "^[A-z]+"),
     REGEXP_REPLACE
     (
-        REGEXP_SUBSTR(Employee.empName, "\s[A-z]+\s"),
-        "\s*",
+        REGEXP_SUBSTR(Employee.empName, "[[:blank:]][A-z]+[[:blank:]]"),
+        "\,[[:blank:]]*",
         ""
     ),
     REGEXP_SUBSTR(Employee.empName, "[A-z]+$"),
@@ -34,13 +34,13 @@ INSERT INTO NewPostalCode (postalCode, cityName, provName)
     REGEXP_REPLACE
     (
         REGEXP_SUBSTR(Department.location, "(\, [A-z]+\,)"),
-        "\,\s*",
+        "\,[[:blank:]]*",
         ""
     ),
     REGEXP_REPLACE
         (
         REGEXP_SUBSTR(Department.location, "([A-z]+\,)",1,3),
-        "\,\s*",
+        "\,[[:blank:]]*",
         ""
         )
     FROM Department 
