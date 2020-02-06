@@ -15,7 +15,7 @@ CREATE TABLE GamesCSV(
     white_rating VARCHAR(255),
     black_id VARCHAR(255),
     black_rating VARCHAR(255),
-    LONGTEXT VARCHAR(255),
+    moves TEXT(255),
     opening_eco VARCHAR(255),
     opening_name VARCHAR(255),
     opening_ply VARCHAR(255)
