@@ -10,7 +10,7 @@ CREATE TABLE NewPostalCode(
 
 CREATE TABLE NewDepartment(
     deptID INT,
-    deptName VARCHAR (100)(100),
+    deptName VARCHAR (100),
     PRIMARY KEY (deptID)
 );
 
