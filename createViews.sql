@@ -1,3 +1,5 @@
+USE normalization;
+
 CREATE VIEW Department 
 AS SELECT 
     NewDepartment.deptID AS deptID, 
@@ -8,9 +10,9 @@ AS SELECT
         NewDepartmentLocation.strName,
         ", ",
         NewPostalCode.cityName,
-        ", "
+        ", ",
         NewPostalCode.provName,
-        ", "
+        ", ",
         NewPostalCode.postalCode)  AS location 
 FROM 
 NewDepartment 
