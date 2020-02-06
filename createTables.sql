@@ -7,7 +7,7 @@ CREATE TABLE Department(deptID INT,deptName VARCHAR(100),location VARCHAR(100));
 DROP TABLE IF EXISTS Employee;  
 CREATE TABLE Employee(empID INT,empName VARCHAR(100),job VARCHAR(100),deptID INT,salary INT);
                   
- DROP TABLE IF EXISTS Assigned;             
+DROP TABLE IF EXISTS Assigned;             
 CREATE TABLE Assigned(empID INT,projID INT,role VARCHAR(100));                 
         
 DROP TABLE IF EXISTS Project;           
