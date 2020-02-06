@@ -1,5 +1,5 @@
-source ./createTables;
-source ./createNewTables;
-source ./migrateTables;
-source ./deleteOldTables;
-source ./createViews;
+source ./createTables.sql;
+source ./createNewTables.sql;
+source ./migrateTables.sql;
+source ./deleteOldTables.sql;
+source ./createViews.sql;
