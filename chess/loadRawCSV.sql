@@ -21,7 +21,7 @@ CREATE TABLE GamesCSV(
     opening_ply VARCHAR(255)
 );
 
-LOAD DATA INFILE './var/lib/mysql-files/games.csv' 
+LOAD DATA INFILE '/var/lib/mysql-files/games.csv' 
 INTO TABLE GamesCSV 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
