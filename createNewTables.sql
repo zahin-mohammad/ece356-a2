@@ -1,4 +1,4 @@
-alter table Persion add primary key (persionId,Pname,PMID)
+CREATE DATABASE IF NOT EXISTS normalization;
 
 CREATE TABLE NewPostalCode(
     postalCode VARCHAR,
