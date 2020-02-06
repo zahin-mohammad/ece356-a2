@@ -6,7 +6,7 @@ INSERT INTO NewEmployee (empID, firstName, middleName, lastName, job, salary)
     REGEXP_REPLACE
     (
         REGEXP_SUBSTR(Employee.empName, "[[:blank:]][A-z]+[[:blank:]]"),
-        "\,[[:blank:]]*",
+        "[[:blank:]]*",
         ""
     ),
     REGEXP_SUBSTR(Employee.empName, "[A-z]+$"),
