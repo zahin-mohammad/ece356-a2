@@ -3,7 +3,12 @@ INSERT INTO NewEmployee (empID, firstName, middleName, lastName, job, salary)
     SELECT DISTINCT 
     Employee.empid, 
     REGEXP_SUBSTR(Employee.empName, "^[A-z]+"),
-    REGEXP_SUBSTR(Employee.empName, "[A-z]+"),
+    REGEXP_REPLACE
+    (
+        REGEXP_SUBSTR(Employee.empName, "\s[A-z]+\s"),
+        "\s*",
+        ""
+    ),
     REGEXP_SUBSTR(Employee.empName, "[A-z]+$"),
     Employee.job, 
     Employee.salary 
@@ -26,7 +31,8 @@ INSERT INTO NewPostalCode (postalCode, cityName, provName)
     (
     SELECT DISTINCT 
     REGEXP_SUBSTR(Department.location,".{7}$"),
-    REGEXP_REPLACE(
+    REGEXP_REPLACE
+    (
         REGEXP_SUBSTR(Department.location, "(\, [A-z]+\,)"),
         "\,\s*",
         ""
