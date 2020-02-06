@@ -37,7 +37,7 @@ INSERT INTO NewDepartmentLocation (deptID, postalCode, strNumber, strName)
     Department.deptID,
     REGEXP_SUBSTR(Department.location,".{7}$"),
     REGEXP_SUBSTR(Department.location,"[0-9]+[A-z]*",1,1),
-    REGEXP_SUBSTR(Department.location,"[A-z]+[[:blank:]][A-z]+",1,1),
+    REGEXP_SUBSTR(Department.location,"[A-z]+[[:blank:]][A-z]+",1,1)
     FROM Department 
     );
 
