@@ -21,7 +21,7 @@ CREATE TABLE GamesCSV(
     opening_ply VARCHAR(255)
 );
 
-LOAD DATA INFILE './games.csv' 
+LOAD DATA LOCAL INFILE './games.csv' 
 INTO TABLE GamesCSV 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
