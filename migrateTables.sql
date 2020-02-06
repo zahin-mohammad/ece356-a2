@@ -22,14 +22,6 @@ INSERT INTO NewDepartment (deptID, deptName)
     SELECT DISTINCT Department.deptID, Department.deptName
     FROM Department 
     );
--- regex for street number (\b\d+\b)
--- regex for street name ([A-z]+)(\s[A-z\b]+)
--- regex for city ([^A-z][\s]\b[A-z]+\b\,)
---  regex replace \,\s*
--- regex for postal .{7}$
--- regex for Province \b[A-z]+\b\,\s[A-Z][0-9]
---  regex replace .{4}$
-
 
 INSERT INTO NewDepartmentLocation (deptID, postalCode, strNumber, strName) 
     (
