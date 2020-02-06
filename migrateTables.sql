@@ -1,3 +1,22 @@
+INSERT INTO NewPostalCode (postalCode, cityName, provName) 
+    (
+    SELECT DISTINCT 
+    REGEXP_SUBSTR(Department.location,".{7}$"),
+    REGEXP_REPLACE
+    (
+        REGEXP_SUBSTR(Department.location, "(\,[[:blank:]][A-z]+\,)"),
+        "\,[[:blank:]]*",
+        ""
+    ),
+    REGEXP_REPLACE
+        (
+        REGEXP_SUBSTR(Department.location, "([A-z]+\,)",1,3),
+        "\,[[:blank:]]*",
+        ""
+        )
+    FROM Department 
+    );
+
 INSERT INTO NewDepartment (deptID, deptName) 
     (
     SELECT DISTINCT Department.deptID, Department.deptName
@@ -10,22 +29,15 @@ INSERT INTO NewDepartment (deptID, deptName)
 -- regex for postal .{7}$
 -- regex for Province \b[A-z]+\b\,\s[A-Z][0-9]
 --  regex replace .{4}$
-INSERT INTO NewPostalCode (postalCode, cityName, provName) 
+
+
+INSERT INTO NewDepartmentLocation (deptID, postalCode, strNumber, strName) 
     (
-    SELECT DISTINCT 
+    SELECT DISTINCT
+    Department.deptID,
     REGEXP_SUBSTR(Department.location,".{7}$"),
-    REGEXP_REPLACE
-    (
-        REGEXP_SUBSTR(Department.location, "(\, [A-z]+\,)"),
-        "\,[[:blank:]]*",
-        ""
-    ),
-    REGEXP_REPLACE
-        (
-        REGEXP_SUBSTR(Department.location, "([A-z]+\,)",1,3),
-        "\,[[:blank:]]*",
-        ""
-        )
+    REGEXP_SUBSTR(Department.location,"[0-9]+[A-z]*",1,1),
+    REGEXP_SUBSTR(Department.location,"[A-z]+[[:blank:]][A-z]+",1,1),
     FROM Department 
     );
 
