@@ -15,13 +15,13 @@ CREATE TABLE GamesCSV(
     white_rating VARCHAR(255),
     black_id VARCHAR(255),
     black_rating VARCHAR(255),
-    moves VARCHAR(255),
+    LONGTEXT VARCHAR(255),
     opening_eco VARCHAR(255),
     opening_name VARCHAR(255),
     opening_ply VARCHAR(255)
 );
 
-LOAD DATA LOCAL INFILE './games.csv' 
+LOAD DATA INFILE './var/lib/mysql-files/games.csv' 
 INTO TABLE GamesCSV 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
