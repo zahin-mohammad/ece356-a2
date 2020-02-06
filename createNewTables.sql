@@ -20,7 +20,7 @@ CREATE TABLE NewDepartmentLocation(
     strNumber VARCHAR (100),
     strName VARCHAR (100),
     PRIMARY KEY (deptID, postalCode),
-    FOFOREIGN KEY (`postalCode`) REFERENCES NewPostalCode(`postalCode`)
+    FOREIGN KEY (`postalCode`) REFERENCES NewPostalCode(`postalCode`)
 );
 
 -- Assigned stayed the same
