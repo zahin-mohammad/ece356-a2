@@ -21,15 +21,14 @@ INSERT INTO NewPostalCode (postalCode, cityName, provName)
     SELECT DISTINCT 
     REGEXP_SUBSTR(Department.location,".{7}$"),
     REGEXP_REPLACE(
-        REGEXP_SUBSTR(Department.location, ""),
-        "[^A-z][\s]\b[A-z]+\b\,",
+        REGEXP_SUBSTR(Department.location, "(\, [A-z]+\,)"),
         "\,\s*",
         ""
     ),
     REGEXP_REPLACE
         (
-        REGEXP_SUBSTR(Department.location, "\b[A-z]+\b\,\s[A-Z][0-9]"),
-        ".{4}$",
+        REGEXP_SUBSTR(Department.location, "([A-z]+\,)",1,3),
+        "\,\s*",
         ""
         )
     FROM Department 
