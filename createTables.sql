@@ -1,5 +1,6 @@
 -- USE <your database name here>;
-
+CREATE DATABASE IF NOT EXISTS normalization;
+USE normalization;
 
 DROP TABLE IF EXISTS Department;           
 CREATE TABLE Department(deptID INT,deptName VARCHAR(100),location VARCHAR(100));                    
