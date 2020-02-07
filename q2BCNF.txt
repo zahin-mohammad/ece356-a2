@@ -1,0 +1,14 @@
+{id} -> {rated, created, last_move_at, turns, victory_status, winner, increment_code, white_id, white_rating, black_id, black_rating, opening_eco, opening_ply}
+{id, white_id} -> {white_rating}
+{id, black_id} -> {black_rating}
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+id | move_number | piece | x_axis | y_axis
+{id} -> {movenumber, piece, x_acis, y_axis}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+opening_eco | opening_name
+{opening_eco} -> {opening_name}
