@@ -38,25 +38,25 @@ with open('./chess/games.csv') as csv_file:
         for value in gameIDHashmap.values():
             cleanCSV.writerow(value)
 
-
+openingMap = {}
 with open('./chess/gamesCleaned.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = -1
-    openingMap = set()
     for row in csv_reader:
         line_count += 1
         if line_count == 0:            
             continue
         openingEco = row[gamesHeaderMap["opening_eco"]]
         openingName = row[gamesHeaderMap["opening_name"]]
-        openingMap.add((openingEco,openingName))
-    
+        if (openingEco,openingName) not in openingMap:
+            openingMap[(openingEco,openingName)] = line_count
+
     with open('./chess/opening.csv', 'w', newline='') as csvfile:
         openingCSV = csv.writer(csvfile, delimiter=',',  quoting=csv.QUOTE_MINIMAL)
-        header = ["opening_eco", "opening_name"]
+        header = ["opening_id","opening_eco","opening_name"]
         openingCSV.writerow(header)
-        for value in openingMap:
-            openingCSV.writerow(value)
+        for row, id in openingMap.items():
+            openingCSV.writerow([id]+list(row))
 
 
 
@@ -86,11 +86,20 @@ with open('./chess/gamesCleaned.csv') as csv_file:
 with open('./chess/gamesCleaned.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     games = []
+    line_count = -1
     for row in csv_reader:
         if len(row) <=0:
             continue
-        games.append([row[0],row[1],row[2],row[3],row[5],row[6],row[7],row[8],row[9],row[10],row[11],row[15]])
-        print(games[-1])
+
+        line_count +=1
+        if line_count == 0:
+            games.append([row[0],row[1],row[2],row[3],row[5],row[6],row[7],row[8],row[9],row[10],row[11],"opening_id",row[15]])
+            print(games[-1])
+        else:
+            openingEco = row[gamesHeaderMap["opening_eco"]]
+            openingName = row[gamesHeaderMap["opening_name"]]
+            opening_id = openingMap[(openingEco,openingName)]
+            games.append([row[0],row[1],row[2],row[3],row[5],row[6],row[7],row[8],row[9],row[10],row[11],opening_id,row[15]])
     
     with open('./chess/gameMinimized.csv', 'w', newline='') as csvfile:
         gameCSV = csv.writer(csvfile, delimiter=',',  quoting=csv.QUOTE_MINIMAL)

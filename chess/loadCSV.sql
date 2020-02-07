@@ -42,6 +42,7 @@ CREATE TABLE Games(
     white_rating VARCHAR(255),
     black_id VARCHAR(255),
     black_rating VARCHAR(255),
+    opening_id VARCHAR(255),
     opening_ply VARCHAR(255)
 );
 
@@ -52,6 +53,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 CREATE TABLE Opening(
+    opening_id VARCHAR(255),
     opening_eco VARCHAR(255),
     opening_name VARCHAR(255)
 );
@@ -73,3 +75,10 @@ INTO TABLE Moves
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+
+ALTER TABLE Moves
+ADD FOREIGN KEY (id) REFERENCES Games(id);
+
+ALTER TABLE Games
+ADD FOREIGN KEY (opening_id) REFERENCES Opening(opening_id);
