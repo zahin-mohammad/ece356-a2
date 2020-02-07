@@ -51,16 +51,16 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
--- CREATE TABLE Opening(
---     opening_eco VARCHAR(255),
---     opening_name VARCHAR(255)
--- );
+CREATE TABLE Opening(
+    opening_eco VARCHAR(255),
+    opening_name VARCHAR(255)
+);
 
--- LOAD DATA INFILE '/var/lib/mysql-files/opening.csv' 
--- INTO TABLE Opening 
--- FIELDS TERMINATED BY ',' 
--- LINES TERMINATED BY '\n'
--- IGNORE 1 ROWS;
+LOAD DATA INFILE '/var/lib/mysql-files/opening.csv' 
+INTO TABLE Opening 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
 
 -- CREATE TABLE Moves(
 --     id VARCHAR (255),
