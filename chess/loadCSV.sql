@@ -62,14 +62,14 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
--- CREATE TABLE Moves(
---     id VARCHAR (255),
---     move_num VARCHAR(255),
---     move VARCHAR(255)
--- );
+CREATE TABLE Moves(
+    id VARCHAR (255),
+    move_num VARCHAR(255),
+    move VARCHAR(255)
+);
 
--- LOAD DATA INFILE '/var/lib/mysql-files/move.csv' 
--- INTO TABLE Moves 
--- FIELDS TERMINATED BY ',' 
--- LINES TERMINATED BY '\n'
--- IGNORE 1 ROWS;
+LOAD DATA INFILE '/var/lib/mysql-files/move.csv' 
+INTO TABLE Moves 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
