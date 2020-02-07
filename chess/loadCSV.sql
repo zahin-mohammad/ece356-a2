@@ -28,12 +28,13 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 
+-- id,rated,created_at,last_move_at,victory_status,winner,increment_code,white_id,white_rating,black_id,black_rating,opening_ply
+
 CREATE TABLE Games(
     id VARCHAR (255),
     rated VARCHAR(255),
     created_at VARCHAR(255),
     last_move_at VARCHAR(255),
-    turns VARCHAR(255),
     victory_status VARCHAR(255),
     winner VARCHAR(255),
     increment_code VARCHAR(255),
