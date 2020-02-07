@@ -31,7 +31,7 @@ IGNORE 1 ROWS;
 -- id,rated,created_at,last_move_at,victory_status,winner,increment_code,white_id,white_rating,black_id,black_rating,opening_ply
 
 CREATE TABLE Games(
-    id VARCHAR (255),
+    game_id VARCHAR (255),
     rated VARCHAR(255),
     created_at VARCHAR(255),
     last_move_at VARCHAR(255),
@@ -65,7 +65,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
 CREATE TABLE Moves(
-    id VARCHAR (255),
+    game_id VARCHAR (255),
     move_num VARCHAR(255),
     move VARCHAR(255)
 );
@@ -76,9 +76,12 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+ALTER TABLE Moves ADD PRIMARY KEY(game_id,move_num);
+ALTER TABLE Opening ADD PRIMARY KEY(opening_id);
+ALTER TABLE Games ADD PRIMARY KEY(game_id);
 
 ALTER TABLE Moves
-ADD FOREIGN KEY (id) REFERENCES Games(id);
+ADD FOREIGN KEY (game_id) REFERENCES Games(game_id);
 
 ALTER TABLE Games
 ADD FOREIGN KEY (opening_id) REFERENCES Opening(opening_id);
