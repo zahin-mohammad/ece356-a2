@@ -80,6 +80,8 @@ ALTER TABLE Moves ADD PRIMARY KEY(game_id,move_num);
 ALTER TABLE Opening ADD PRIMARY KEY(opening_id);
 ALTER TABLE Games ADD PRIMARY KEY(game_id);
 
+select game_id from Moves where game_id not in (select game_id from Games);
+
 ALTER TABLE Moves
 ADD FOREIGN KEY (game_id) REFERENCES Games(game_id);
 
